@@ -1,0 +1,2 @@
+# custom-boilerplate
+for Go
