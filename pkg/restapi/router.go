@@ -9,8 +9,8 @@ var (
 )
 
 type routerGroup struct {
-	Path  string
-	Group *gin.RouterGroup
+	path  string
+	group *gin.RouterGroup
 }
 
 func NewGroup(groupPath string) *routerGroup {
@@ -21,11 +21,11 @@ func NewGroup(groupPath string) *routerGroup {
 }
 
 func (rg *routerGroup) RegisterGet(getPath string, fun gin.HandlerFunc) {
-	rg.Group.GET(getPath, fun)
+	rg.group.GET(getPath, fun)
 }
 
 func (rg *routerGroup) RegisterPost(postPath string, fun gin.HandlerFunc) {
-	rg.Group.POST(postPath, fun)
+	rg.group.POST(postPath, fun)
 }
 
 func Run() error {
