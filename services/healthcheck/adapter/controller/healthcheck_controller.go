@@ -14,7 +14,7 @@ func init() {
 	di.RegisterBean(NewHealthCheckController)
 	di.GetContainer().Invoke(
 		func(hcc *HealthCheckController) {
-			group := restapi.NewGroup("/health-check")
+			group := restapi.RegisterGroup("/health-check")
 			group.RegisterGet("/ping", hcc.Ping)
 			group.RegisterPost("/readiness", hcc.Readiness)
 		})
