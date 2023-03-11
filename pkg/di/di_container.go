@@ -7,9 +7,11 @@ import (
 	"go.uber.org/dig"
 )
 
-var container = dig.New()
-var componentRegistry = make([]interface{}, 0)
-var isInitialized = false
+var (
+	container         = dig.New()
+	componentRegistry = make([]interface{}, 0)
+	isInitialized     = false
+)
 
 func init() {
 	for _, target := range componentRegistry {

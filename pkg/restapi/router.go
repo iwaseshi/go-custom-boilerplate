@@ -8,24 +8,24 @@ var (
 	router = gin.Default()
 )
 
-type groups struct {
-	Path  string
-	Group *gin.RouterGroup
+type routerGroup struct {
+	path  string
+	group *gin.RouterGroup
 }
 
-func RegisterGroup(groupPath string) *groups {
-	return &groups{
+func NewGroup(groupPath string) *routerGroup {
+	return &routerGroup{
 		groupPath,
 		router.Group(groupPath),
 	}
 }
 
-func (g *groups) RegisterGet(getPath string, fun gin.HandlerFunc) {
-	g.Group.GET(getPath, fun)
+func (rg *routerGroup) RegisterGet(getPath string, fun gin.HandlerFunc) {
+	rg.group.GET(getPath, fun)
 }
 
-func (g *groups) RegisterPost(postPath string, fun gin.HandlerFunc) {
-	g.Group.POST(postPath, fun)
+func (rg *routerGroup) RegisterPost(postPath string, fun gin.HandlerFunc) {
+	rg.group.POST(postPath, fun)
 }
 
 func Run() error {
