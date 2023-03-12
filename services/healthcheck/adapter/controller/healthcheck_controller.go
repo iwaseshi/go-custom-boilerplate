@@ -17,7 +17,8 @@ func init() {
 			group := restapi.NewGroup("/health-check")
 			group.RegisterGet("/ping", hcc.Ping)
 			group.RegisterPost("/readiness", hcc.Readiness)
-		})
+		},
+	)
 }
 
 type HealthCheckController struct {
